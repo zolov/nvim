@@ -57,7 +57,7 @@ local keymaps = {
 	insert_mode = {
 		-- exit other mode
 		["jk"] = "<Esc>",
-		["kj"] = "<Esc>",
+		["jj"] = "<Esc>",
 	},
 	terminal_mode = {},
 	visual_mode = {
@@ -73,7 +73,7 @@ local keymaps = {
 		["<A-K>"] = ":m '<-2<CR>gv=gv",
 	},
 	visual_block_mode = {
-		-- Move text up and down
+		-- Better Paste 
 		["<leader>p"] = '"_dP',
 	},
 	command_mode = {
@@ -111,5 +111,5 @@ end
 
 -- tabs complete
 vim.api.nvim_set_keymap("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", [[pumvisible() ? "\<c-P>" : "\<S-Tab>"]], { noremap = true, expr = true })
 
