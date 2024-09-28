@@ -1,4 +1,4 @@
-require("brian.config.autocommands")
-require("brian.config.options")
-require("brian.config.lazy")
-require("brian.config.keymaps")
+require("zolov.config.autocommands")
+require("zolov.config.options")
+require("zolov.config.lazy")
+require("zolov.config.keymaps")

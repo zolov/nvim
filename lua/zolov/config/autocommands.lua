@@ -115,7 +115,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "*.java" },
 	callback = function()
-		require("brian.config.jdtls").setup_config()
+		require("zolov.config.jdtls").setup_config()
 	end,
 })
 
