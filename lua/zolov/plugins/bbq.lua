@@ -9,8 +9,8 @@ return {
 	opts = {},
 	config = function()
 		require("barbecue").setup({
-			show_dirname = false,
+			show_dirname = true,
 		})
-		require("barbecue.ui").toggle(false)
+		require("barbecue.ui").toggle(true)
 	end,
 }
