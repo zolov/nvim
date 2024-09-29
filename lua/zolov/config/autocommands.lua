@@ -152,3 +152,42 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 		end
 	end,
 })
+
+
+vim.api.nvim_create_autocmd({ "User" }, {
+	pattern = { "AlphaReady" },
+	callback = function()
+		vim.cmd([[
+      set laststatus=1 | autocmd BufUnload <buffer> set laststatus=3
+    ]])
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "qf",
+	"help",
+	"man",
+	"lspinfo",
+	"spectre_panel",
+	"startuptime",
+	"notify",
+	"nofile",
+	"lspinfo",
+	"terminal",
+	"prompt",
+	"toggleterm",
+	"copilot",
+	"startuptime",
+	"tsplayground",
+	"PlenaryTestPopup",
+	"fugitive",
+	"dap-repl",
+	"Jaq", },
+	callback = function()
+		vim.cmd([[
+      nnoremap <silent> <buffer> q :close<CR> 
+      set nobuflisted 
+    ]])
+	end,
+})
+

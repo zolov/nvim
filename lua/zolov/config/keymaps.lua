@@ -57,14 +57,13 @@ local keymaps = {
 	insert_mode = {
 		-- exit other mode
 		["jk"] = "<Esc>",
-		["jj"] = "<Esc>",
 	},
 	terminal_mode = {},
 	visual_mode = {
 		-- Better Paste
 		["p"] = '"_dP',
 		-- exit other modes
-		["jk"] = "<Esc>",
+		-- ["jk"] = "<Esc>",
 		-- Indent lines
 		["<"] = "<gv",
 		[">"] = ">gv",

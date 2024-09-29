@@ -72,7 +72,8 @@ return {
 
       -- FZF Find
 			{ "<leader>f", group = "Files", nowait = true, remap = false },
-			{ "<leader>ff", ":lua require('fzf-lua').files()<cr>", desc = "Find files", nowait = true, remap = false },
+			-- { "<leader>ff", ":lua require('fzf-lua').files()<cr>", desc = "Find files", nowait = true, remap = false },
+			{ "<leader>ff", ":lua require('zolov.config.utils').telescope_git_or_file()<cr>", desc = "Find files", nowait = true, remap = false },
 			{ "<leader>fg", ":FzfLua live_grep<CR>", desc = "Find Text", nowait = true, remap = false },
 			{ "<leader>fr", ":FzfLua oldfiles<cr>", desc = "Find recent files", nowait = true, remap = false },
 			{
@@ -94,7 +95,7 @@ return {
 			{ "<leader>gc", ":FzfLua git_commits<cr>", desc = "Checkout commit", nowait = true, remap = false },
 			{ "<leader>gd", ":Gitsigns diffthis HEAD<cr>", desc = "Diff", nowait = true, remap = false },
 			{ "<leader>gf", ":FzfLua git_files<cr>", desc = "Find tracked files", nowait = true, remap = false },
-			{ "<leader>gg", ":lua _LAZYGIT_TOGGLE()<cr>", desc = "Lazygit", nowait = true, remap = false },
+			{ "<leader>gg", ":LazyGit<cr>", desc = "Lazygit", nowait = true, remap = false },
 			{
 				"<leader>gj",
 				":lua require 'gitsigns'.next_hunk()<cr>",
@@ -187,7 +188,7 @@ return {
 			{ "<leader>t", group = "Terminal", nowait = true, remap = false },
 			{ "<leader>tf", ":ToggleTerm direction=float<cr>", desc = "Terminal Float", nowait = true, remap = false },
 			{
-				"<leader>th",
+				"<leader>tt",
 				":ToggleTerm size=10 direction=horizontal<cr>",
 				desc = "Terminal Horizontal",
 				nowait = true,

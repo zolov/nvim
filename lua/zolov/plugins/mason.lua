@@ -4,6 +4,13 @@ local M = {
 		{
 			"williamboman/mason.nvim",
 			opts = {
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
 				registries = {
 					"github:nvim-java/mason-registry",
 					"github:mason-org/mason-registry",
@@ -16,24 +23,6 @@ local M = {
 	},
 }
 
-M.execs = {
-	"lua_ls",
-	"cssls",
-	"html",
-	"ts_ls",
-	"astro",
-	"pyright",
-	"bashls",
-	"jsonls",
-	"yamlls",
-	"marksman",
-	"tailwindcss",
-	"rust_analyzer",
-	"eslint",
-	"jdtls",
-  "lombok-nightly"
-}
-
 function M.config()
 	require("mason").setup({
 		ui = {
@@ -41,13 +30,33 @@ function M.config()
 		},
 	})
 	require("mason-lspconfig").setup({
-		ensure_installed = M.execs,
+		ensure_installed = {
+			"lua_ls",
+			"cssls",
+			"html",
+			"ts_ls",
+			"astro",
+			"pyright",
+			"bashls",
+			"jsonls",
+			"yamlls",
+			"marksman",
+			"tailwindcss",
+			"rust_analyzer",
+			"eslint",
+			"jdtls",
+			-- "lombok-nightly",
+		},
 	})
 	require("mason-nvim-dap").setup()
 	require("mason-tool-installer").setup({
 		ensure_installed = {
 			"java-debug-adapter",
 			"java-test",
+			"google-java-format",
+			"stylua",
+			"shellcheck",
+			"shfmt",
 		},
 
 		-- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39

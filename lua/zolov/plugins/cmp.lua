@@ -3,9 +3,11 @@ return {
 	event = "InsertEnter",
 	dependencies = {
 		"onsails/lspkind.nvim",
+		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		-- { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		{
 			"L3MON4D3/LuaSnip",
@@ -21,17 +23,24 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		require("luasnip.loaders.from_vscode").lazy_load()
+		luasnip.config.setup({})
+
 		cmp.setup({
 			window = {
-				completion = cmp.config.window.bordered({
-					scrollbar = false,
-					winhighlight = "",
-				}),
-				documentation = cmp.config.window.bordered({
-					-- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-					scrollbar = false,
-					winhighlight = "",
-				}),
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+				-- completion = cmp.config.window.bordered({
+				-- 	scrollbar = false,
+				-- 	winhighlight = "",
+				-- }),
+				-- documentation = cmp.config.window.bordered({
+				-- 	border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+				-- 	scrollbar = false,
+				-- 	winhighlight = "",
+				-- }),
+			},
+			completion = {
+				completeopt = "menu,menuone,noinsert",
 			},
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -47,30 +56,21 @@ return {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif require("luasnip").expand_or_jumpable() then
-						vim.fn.feedkeys(
-							vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-							""
-						)
+					elseif luasnip.expand_or_locally_jumpable() then
+						luasnip.expand_or_jump()
 					else
 						fallback()
 					end
-				end, {
-					"i",
-					"s",
-				}),
+				end, { "i", "s" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif require("luasnip").jumpable(-1) then
-						vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+					elseif luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
 					else
 						fallback()
 					end
-				end, {
-					"i",
-					"s",
-				}),
+				end, { "i", "s" }),
 			},
 			completion = {
 				completeopt = "menu,menuone",
@@ -89,5 +89,6 @@ return {
 				{ name = "buffer", keyword_length = 3 },
 			},
 		})
+		-- require("lsp-zero").cmp_action()
 	end,
 }
