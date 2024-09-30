@@ -46,7 +46,6 @@ return {
       -- Bookmarks
       { "<leader>b", group = "Bookmarks", nowait = true, remap = false },
 
-      -- TODO: Fzf integrations
       { "<leader>bp", ":Telescope bookmarks<CR>", silent = true, nowait = true, remap = false },
       { "<leader>ba", ":lua require('bookmarks').add_bookmarks(false)<CR>", silent = true, nowait = true, remap = false },
       { "<leader>bd", ":lua require('bookmarks.list').delete_on_virt()<CR>", silent = true, nowait = true, remap = false },
@@ -54,14 +53,21 @@ return {
       -- SEARCH
 			{ "<leader>S", group = "Search", nowait = true, remap = false },
 			{ "<leader>SC", ":FzfLua commands<cr>", desc = "Commands", nowait = true, remap = false },
-			{ "<leader>SH", ":FzfLua highlights<cr>", desc = "Highlights", nowait = true, remap = false },
-			{ "<leader>Sb", ":FzfLua git_branches<cr>", desc = "Checkout branch", nowait = true, remap = false },
-			{ "<leader>Sc", ":FzfLua colorschemes<cr>", desc = "Colorscheme", nowait = true, remap = false },
-			{ "<leader>Sh", ":FzfLua help_tags<cr>", desc = "Find Help", nowait = true, remap = false },
+			{ "<leader>SH", ":Telescope highlights<cr>", desc = "Highlights", nowait = true, remap = false },
+			{ "<leader>Sb", ":Telescope git_branches<cr>", desc = "Checkout branch", nowait = true, remap = false },
+			{ "<leader>Sc", ":Telescope colorschemes<cr>", desc = "Colorscheme", nowait = true, remap = false },
+			{ "<leader>Sh", ":Telescope help_tags<cr>", desc = "Find Help", nowait = true, remap = false },
 			{ "<leader>Sk", ":FzfLua keymaps<cr>", desc = "Keymaps", nowait = true, remap = false },
+			-- {
+			-- 	"<leader>fb",
+			-- 	":lua require('fzf-lu').buffers({winopts = { height = 0.25, width = 1, row = 1}, preview_opts = 'hidden'})<cr>",
+			-- 	desc = "Find Buffers",
+			-- 	nowait = true,
+			-- 	remap = false,
+			-- },
 			{
 				"<leader>fb",
-				":lua require('fzf-lua').buffers({winopts = { height = 0.25, width = 1, row = 1}, preview_opts = 'hidden'})<cr>",
+				":Telescope buffers<cr>",
 				desc = "Find Buffers",
 				nowait = true,
 				remap = false,
@@ -74,8 +80,8 @@ return {
 			{ "<leader>f", group = "Files", nowait = true, remap = false },
 			-- { "<leader>ff", ":lua require('fzf-lua').files()<cr>", desc = "Find files", nowait = true, remap = false },
 			{ "<leader>ff", ":lua require('zolov.config.utils').telescope_git_or_file()<cr>", desc = "Find files", nowait = true, remap = false },
-			{ "<leader>fg", ":FzfLua live_grep<CR>", desc = "Find Text", nowait = true, remap = false },
-			{ "<leader>fr", ":FzfLua oldfiles<cr>", desc = "Find recent files", nowait = true, remap = false },
+			{ "<leader>fg", ":Telescope live_grep<CR>", desc = "Find Text", nowait = true, remap = false },
+			{ "<leader>fr", ":Telescope oldfiles<cr>", desc = "Find recent files", nowait = true, remap = false },
 			{
 				"<leader>fs",
 				":FzfLua lsp_live_workspace_symbols<cr>",
@@ -91,10 +97,10 @@ return {
 				nowait = true,
 				remap = false,
 			},
-			{ "<leader>gb", ":FzfLua git_branches<cr>", desc = "Checkout branch", nowait = true, remap = false },
-			{ "<leader>gc", ":FzfLua git_commits<cr>", desc = "Checkout commit", nowait = true, remap = false },
+			{ "<leader>gb", ":Telescope git_branches<cr>", desc = "Checkout branch", nowait = true, remap = false },
+			{ "<leader>gc", ":Telescope git_commits<cr>", desc = "Checkout commit", nowait = true, remap = false },
 			{ "<leader>gd", ":Gitsigns diffthis HEAD<cr>", desc = "Diff", nowait = true, remap = false },
-			{ "<leader>gf", ":FzfLua git_files<cr>", desc = "Find tracked files", nowait = true, remap = false },
+			{ "<leader>gf", ":Telescope git_files<cr>", desc = "Find tracked files", nowait = true, remap = false },
 			{ "<leader>gg", ":LazyGit<cr>", desc = "Lazygit", nowait = true, remap = false },
 			{
 				"<leader>gj",
